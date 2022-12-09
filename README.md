@@ -5,10 +5,10 @@ The solution is based on [Red Hat Solution 4566711.](https://access.redhat.com/s
 
 ## Installation
 Copy the files from Repository into correct location on your system.
-
+```
 /etc/dnf/plugins/aap-protector.conf
 /etc/dnf/plugins/aap-protector.list
-
+```
 
 ### Configuration file and Package List
 Place the configuration file into `dnf-plugin` directory.
