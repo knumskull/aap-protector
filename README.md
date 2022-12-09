@@ -1,4 +1,4 @@
-# Some title
+# Ansible Automation Platform Upgrade Protector
 The `aap-protector` is a `dnf-plugin`, written to take care of unwanted package upgrades to Ansible Automation Platform when perform operating system upgrades.
 The solution is based on [Red Hat Solution 4566711.](https://access.redhat.com/solutions/4566711)
 
