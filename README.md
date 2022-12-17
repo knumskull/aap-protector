@@ -52,4 +52,4 @@ The python file need to be placed in following path.
 
 
 ## LICENSE
-This project is licensed under the GPLv3+
+This project is licensed under the MIT
