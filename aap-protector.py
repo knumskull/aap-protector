@@ -45,10 +45,17 @@ class AnsibleAutomationPlatformProtector(dnf.Plugin):
         return package_whitelist
 
     def sack(self):
-        excluded_pkgs_query = self._load_package_list()
-        total = len(excluded_pkgs_query)
+        package_names = list(self._load_package_list())
         logger.info(_('Reading AAP protector configuration'))
-        self.base.sack.add_excludes(excluded_pkgs_query)
+        if not package_names:
+            total = 0
+            excluded_pkgs = []
+        else:
+            excluded_pkgs = list(
+                self.base.sack.query().filterm(name=package_names)
+            )
+            total = len(excluded_pkgs)
+            self.base.sack.add_excludes(excluded_pkgs)
 
         logger.info(_(f'*** Excluded total: {total}'))
         if total:
