@@ -49,6 +49,15 @@ The python file need to be placed in following path.
 # dnf <command> --disableplugin aap-protector <package>
 ```
 
+## Verbose / troubleshooting
+
+Use DNF’s own debug level when you need more detail (timers, repo metadata, plugin load order, etc.), for example:
+
+```
+dnf -d 10 <command>
+```
+
+The plugin logs its summary at INFO (`Reading AAP protector configuration`, excluded count, and the upgrade warning when anything is excluded). Each excluded package is also logged at DEBUG (`--* Excluded PKG: …`); there is no config flag for that. Showing DEBUG from the plugin logger may require DNF logging settings beyond `dnf -d` alone.
 
 
 ## LICENSE

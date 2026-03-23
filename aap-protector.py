@@ -1,5 +1,3 @@
-import configparser
-
 import dnf
 import dnf.exceptions
 from dnfpluginscore import _, logger
@@ -49,13 +47,14 @@ class AnsibleAutomationPlatformProtector(dnf.Plugin):
         logger.info(_('Reading AAP protector configuration'))
         if not package_names:
             total = 0
-            excluded_pkgs = []
         else:
             excluded_pkgs = list(
                 self.base.sack.query().filterm(name=package_names)
             )
             total = len(excluded_pkgs)
             self.base.sack.add_excludes(excluded_pkgs)
+            for pkg in excluded_pkgs:
+                logger.debug(_('--* Excluded PKG: %s'), str(pkg))
 
         logger.info(_(f'*** Excluded total: {total}'))
         if total:
